@@ -5,12 +5,13 @@
 
 /* ---------- Palette Tokens ---------- */
 :root {
-  --paper: #f5f0e1;
-  --paper-white: #faf8f2;
-  --paper-pale: #efe9d8;
-  --ink: #1a1a1a;
-  --ink-mid: #4a4a4a;
-  --ink-light: #7a7a7a;
+  --paper: #fce589;
+  --paper-deep: #f5ce54;
+  --paper-pale: #fff7d6;
+  --paper-white: #fffbef;
+  --ink: #151210;
+  --ink-mid: #3a3428;
+  --ink-light: #6b6355;
   --mix-y: #e6c840;
   --rgb-r: #e85d5d;
   --rgb-g: #5de88a;
@@ -23,6 +24,7 @@
   --sage: #b7b7a4;
   --chrome-border: 2px solid var(--ink);
   --shadow-pixel: 4px 4px 0px 0px var(--ink);
+  --chrome-shadow: #8b7428;
 }
 
 /* ---------- Global ---------- */
@@ -30,11 +32,19 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--paper);
   color: var(--ink);
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 14px;
   line-height: 1.5;
+}
+body {
+  min-height: 100dvh;
+  background:
+    repeating-linear-gradient(0deg,  transparent 0 3px, rgba(21,18,16,0.04) 3px 4px),
+    repeating-linear-gradient(90deg, transparent 0 3px, rgba(21,18,16,0.04) 3px 4px),
+    var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
 a { color: var(--rgb-b); }
@@ -50,8 +60,12 @@ a { color: var(--rgb-b); }
 .stack > * + * { margin-top: 24px; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-@media (min-width: 900px) { .grid-6 { grid-template-columns: repeat(6, 1fr); } }
+.grid-6 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (min-width: 700px) { .grid-6 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1000px) {
+  .grid-6 { grid-template-columns: repeat(5, 1fr); }
+  .grid-6 > :first-child { grid-column: span 2; grid-row: span 2; }
+}
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
 .gap-8 { gap: 8px; }
@@ -132,20 +146,23 @@ a { color: var(--rgb-b); }
   gap: 12px;
   align-items: center;
   margin: 32px 0 16px;
-  padding-bottom: 8px;
-  border-bottom: var(--chrome-border);
+  padding: 6px 12px;
+  border: var(--chrome-border);
+  background: var(--paper-deep);
+  box-shadow: var(--shadow-pixel);
 }
 .section-numeral {
   font-family: 'VT323', monospace;
-  font-size: 32px;
+  font-size: 30px;
   line-height: 1;
-  color: var(--mix-y);
+  color: var(--paper-pale);
   text-shadow: 2px 2px 0 var(--ink);
 }
 .section-title {
   font-family: 'IBM Plex Serif', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 /* ---------- Section Mark ---------- */
@@ -204,20 +221,25 @@ input[type="text"] {
 }
 button {
   border: var(--chrome-border);
-  background: var(--paper);
-  padding: 6px 14px;
+  background: var(--paper-pale);
+  padding: 5px 12px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   cursor: pointer;
   box-shadow: 2px 2px 0 0 var(--ink);
+  transition: transform 80ms, box-shadow 80ms, background-color 80ms;
 }
+button:hover { background: var(--mix-y); }
 button:active {
   transform: translate(2px, 2px);
   box-shadow: none;
 }
 button.active {
   background: var(--ink);
-  color: var(--paper-white);
+  color: var(--paper-pale);
 }
 
 /* ---------- Simulation Canvas ---------- */
@@ -252,16 +274,18 @@ button.active {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 10px 24px;
+  padding: 6px 24px;
   border-bottom: var(--chrome-border);
-  background: var(--paper-pale);
+  background: var(--paper-deep);
+  box-shadow: 0 4px 0 0 var(--ink);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 .topbar-title {
   font-family: 'VT323', monospace;
-  font-size: 24px;
+  font-size: 26px;
+  letter-spacing: 1px;
 }
 .topbar-meta {
   margin-left: auto;
@@ -278,7 +302,13 @@ button.active {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  box-shadow: 3px 3px 0 0 var(--ink);
 }
+.grid-6 > :first-child.it-card {
+  background: var(--paper-pale);
+  box-shadow: var(--shadow-pixel);
+}
+.grid-6 > :first-child .it-card-headline { font-size: 18px; }
 .it-card-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
