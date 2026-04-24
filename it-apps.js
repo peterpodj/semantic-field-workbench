@@ -12,7 +12,7 @@ const ITApps = (function() {
     {
       label: 'Vector DBs',
       headline: 'Semantic retrieval as field query',
-      equation: String.raw`R(q) = \\{\\, d \\in D : \\lVert \\vec{e}(d) - q \\rVert < \\epsilon \\,\\}`,
+      equation: String.raw`R(q) = \{\, d \in D : \lVert \vec{e}(d) - q \rVert < \epsilon \,\}`,
       map: {
         word: 'query embedding q',
         field: 'corpus embedding space',
@@ -24,7 +24,7 @@ const ITApps = (function() {
     {
       label: 'Content Routing',
       headline: 'Propagation of relevance signals',
-      equation: String.raw`\\partial_t \\phi = D\\nabla^2\\phi - \\vec{u}\\cdot\\nabla\\phi - k\\phi`,
+      equation: String.raw`\partial_t \phi = D\nabla^2\phi - \vec{u}\cdot\nabla\phi - k\phi`,
       map: {
         word: 'content item',
         field: 'topic priority space',
@@ -36,7 +36,7 @@ const ITApps = (function() {
     {
       label: 'Cache Warming',
       headline: 'Pre-fetching by predicted demand',
-      equation: String.raw`\\phi_{t+1} = \\phi_t + \\Delta t\\,(D\\nabla^2\\phi - k\\phi)`,
+      equation: String.raw`\phi_{t+1} = \phi_t + \Delta t\,(D\nabla^2\phi - k\phi)`,
       map: {
         word: 'cache key',
         field: 'key popularity space',
@@ -48,7 +48,7 @@ const ITApps = (function() {
     {
       label: 'Incident Propagation',
       headline: 'Alert cascade through service graph',
-      equation: String.raw`\\partial_t \\phi = D\\nabla^2\\phi - \\vec{u}\\cdot\\nabla\\phi - k\\phi + S(t)`,
+      equation: String.raw`\partial_t \phi = D\nabla^2\phi - \vec{u}\cdot\nabla\phi - k\phi + S(t)`,
       map: {
         word: 'alert / metric',
         field: 'service dependency graph',
@@ -60,7 +60,7 @@ const ITApps = (function() {
     {
       label: 'Doc Graphs',
       headline: 'Knowledge diffusion across links',
-      equation: String.raw`\\phi_i^{(n+1)} = \\phi_i^{(n)} + \\alpha\\sum_j A_{ij}(\\phi_j - \\phi_i)`,
+      equation: String.raw`\phi_i^{(n+1)} = \phi_i^{(n)} + \alpha\sum_j A_{ij}(\phi_j - \phi_i)`,
       map: {
         word: 'concept / node',
         field: 'knowledge graph',
@@ -72,7 +72,7 @@ const ITApps = (function() {
     {
       label: 'Feature Stores',
       headline: 'Feature freshness as decaying field',
-      equation: String.raw`\\partial_t \\phi = -k\\phi + \\sum_m \\delta(t - t_m)`,
+      equation: String.raw`\partial_t \phi = -k\phi + \sum_m \delta(t - t_m)`,
       map: {
         word: 'feature value',
         field: 'feature manifold',

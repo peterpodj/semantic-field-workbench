@@ -9,7 +9,7 @@ const Sections = (function() {
   /* ---------- §02 Lambda Lens ---------- */
   function buildLambdaLens() {
     const wrap = UI.el('div', '');
-    wrap.appendChild(Sim.TeX(String.raw`I(w) = λ c.  higl(c,\vec{f}(w)igr)`));
+    wrap.appendChild(Sim.TeX(String.raw`I(w) = \lambda c.\;\bigl(c,\vec{f}(w)\bigr)`));
 
     const body = UI.el('div', 'explain-card mt-16');
     body.innerHTML = `
@@ -107,7 +107,7 @@ const Sections = (function() {
   /* ---------- §03 Feature Space ---------- */
   function buildFeatureSpace() {
     const wrap = UI.el('div', '');
-    wrap.appendChild(Sim.TeX(String.raw`χ_S = λ w.  gigl(φ̃(w)igr)`));
+    wrap.appendChild(Sim.TeX(String.raw`\chi_S = \lambda w.\;\bigl(\tilde{\phi}(w)\bigr)`));
 
     const body = UI.el('div', 'explain-card mt-16');
     body.innerHTML = `

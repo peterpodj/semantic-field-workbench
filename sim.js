@@ -56,7 +56,7 @@ const Sim = (function() {
       const jp = j < NY - 1 ? j + 1 : j;
       const jm = j > 0 ? j - 1 : j;
       const p = this.phi;
-      const id = this.idx;
+      const id = (x, y) => y * NX + x;
       return (
         p[id(ip, j)] + p[id(im, j)] + p[id(i, jp)] + p[id(i, jm)] - 4 * p[id(i, j)]
       ) / (this.dx * this.dy);
@@ -66,7 +66,7 @@ const Sim = (function() {
     advection(i, j) {
       const NX = this.NX, NY = this.NY;
       const p = this.phi;
-      const id = this.idx;
+      const id = (x, y) => y * NX + x;
       let dpx = 0, dpy = 0;
       if (this.uX > 0) {
         const im = i > 0 ? i - 1 : i;
