@@ -1,0 +1,401 @@
+/* Design System — Semantic Field Workbench */
+
+/* ---------- Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;600&display=swap');
+
+/* ---------- Palette Tokens ---------- */
+:root {
+  --paper: #f5f0e1;
+  --paper-white: #faf8f2;
+  --paper-pale: #efe9d8;
+  --ink: #1a1a1a;
+  --ink-mid: #4a4a4a;
+  --ink-light: #7a7a7a;
+  --mix-y: #e6c840;
+  --rgb-r: #e85d5d;
+  --rgb-g: #5de88a;
+  --rgb-b: #5d8ae8;
+  --sky: #8ecae6;
+  --violet: #b8a9c9;
+  --peach: #f4a261;
+  --mint: #a8d5ba;
+  --butter: #f4e285;
+  --sage: #b7b7a4;
+  --chrome-border: 2px solid var(--ink);
+  --shadow-pixel: 4px 4px 0px 0px var(--ink);
+}
+
+/* ---------- Global ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
+a { color: var(--rgb-b); }
+
+/* ---------- Typography ---------- */
+.font-display { font-family: 'VT323', monospace; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-serif { font-family: 'IBM Plex Serif', serif; }
+.font-sans { font-family: 'IBM Plex Sans', sans-serif; }
+
+/* ---------- Layout ---------- */
+.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.stack > * + * { margin-top: 24px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (min-width: 900px) { .grid-6 { grid-template-columns: repeat(6, 1fr); } }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.gap-8 { gap: 8px; }
+.gap-16 { gap: 16px; }
+
+/* ---------- Window Chrome ---------- */
+.window {
+  border: var(--chrome-border);
+  box-shadow: var(--shadow-pixel);
+  background: var(--paper-white);
+}
+.window-yellow { background: var(--butter); }
+.window-cream { background: var(--paper-pale); }
+.window-white { background: var(--paper-white); }
+
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-bottom: var(--chrome-border);
+  background: var(--paper-pale);
+}
+.window-titlebar-meta {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-light);
+}
+.window-statusbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 10px;
+  border-top: var(--chrome-border);
+  background: var(--paper-pale);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-light);
+}
+.traffic-light {
+  width: 12px; height: 12px;
+  border: var(--chrome-border);
+  display: inline-block;
+}
+.traffic-red { background: var(--rgb-r); }
+.traffic-yellow { background: var(--mix-y); }
+.traffic-green { background: var(--rgb-g); }
+
+.window-body { padding: 16px; }
+
+/* ---------- Hatch Patterns ---------- */
+.hatch-diagonal {
+  background: repeating-linear-gradient(
+    45deg, var(--paper-pale), var(--paper-pale) 4px, var(--ink) 4px, var(--ink) 5px
+  );
+}
+.hatch-horizontal {
+  background: repeating-linear-gradient(
+    0deg, var(--paper-pale), var(--paper-pale) 4px, var(--ink) 4px, var(--ink) 5px
+  );
+}
+.hatch-vertical {
+  background: repeating-linear-gradient(
+    90deg, var(--paper-pale), var(--paper-pale) 4px, var(--ink) 4px, var(--ink) 5px
+  );
+}
+
+/* ---------- Dashed Dividers ---------- */
+.dash-top { border-top: 2px dashed var(--ink); }
+.dash-bottom { border-bottom: 2px dashed var(--ink); }
+.dash-left { border-left: 2px dashed var(--ink); }
+.dash-right { border-right: 2px dashed var(--ink); }
+
+/* ---------- Section Header ---------- */
+.section-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: var(--chrome-border);
+}
+.section-numeral {
+  font-family: 'VT323', monospace;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--mix-y);
+  text-shadow: 2px 2px 0 var(--ink);
+}
+.section-title {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ---------- Section Mark ---------- */
+.section-mark {
+  display: inline-block;
+  padding: 2px 8px;
+  border: var(--chrome-border);
+  background: var(--paper);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Explain Card ---------- */
+.explain-card {
+  border: var(--chrome-border);
+  background: var(--paper-white);
+  padding: 16px;
+}
+.explain-card-title {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.explain-card-body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+/* ---------- Controls ---------- */
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+}
+.control-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  min-width: 90px;
+}
+input[type="range"] {
+  flex: 1;
+  accent-color: var(--ink);
+}
+input[type="text"] {
+  border: var(--chrome-border);
+  padding: 4px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  background: var(--paper-white);
+  color: var(--ink);
+}
+button {
+  border: var(--chrome-border);
+  background: var(--paper);
+  padding: 6px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 0 var(--ink);
+}
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+button.active {
+  background: var(--ink);
+  color: var(--paper-white);
+}
+
+/* ---------- Simulation Canvas ---------- */
+.sim-canvas {
+  border: var(--chrome-border);
+  image-rendering: pixelated;
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  background: var(--ink);
+}
+
+/* ---------- Tweaks Panel ---------- */
+.tweaks-panel {
+  position: sticky;
+  top: 12px;
+  border: var(--chrome-border);
+  box-shadow: var(--shadow-pixel);
+  background: var(--paper-white);
+  padding: 12px;
+}
+.tweaks-title {
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  border-bottom: var(--chrome-border);
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 24px;
+  border-bottom: var(--chrome-border);
+  background: var(--paper-pale);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar-title {
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+}
+.topbar-meta {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-light);
+}
+
+/* ---------- IT App Cards ---------- */
+.it-card {
+  border: var(--chrome-border);
+  background: var(--paper-white);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.it-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  letter-spacing: 0.08em;
+}
+.it-card-headline {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+.it-card-equation {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--paper-pale);
+  padding: 6px;
+  border: 1px dashed var(--ink-light);
+}
+.it-card-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-mid);
+}
+.it-card-bullets li { margin-bottom: 4px; }
+.it-card-bullets li::before {
+  content: "› ";
+  color: var(--mix-y);
+  font-weight: bold;
+}
+
+/* ---------- Concept Map ---------- */
+.concept-map-node {
+  cursor: pointer;
+}
+.concept-map-node rect {
+  fill: var(--paper-white);
+  stroke: var(--ink);
+  stroke-width: 2px;
+}
+.concept-map-node text {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 13px;
+  fill: var(--ink);
+}
+.concept-map-edge {
+  stroke: var(--ink-light);
+  stroke-width: 1.5px;
+  fill: none;
+}
+.concept-map-edge.highlight {
+  stroke: var(--mix-y);
+  stroke-width: 2.5px;
+}
+
+/* ---------- Table ---------- */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.data-table th, .data-table td {
+  border: 1px solid var(--ink);
+  padding: 6px 8px;
+  text-align: left;
+}
+.data-table th {
+  background: var(--paper-pale);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 11px;
+}
+.data-table tr:hover td {
+  background: var(--butter);
+}
+
+/* ---------- Equation Block ---------- */
+.equation-block {
+  border: var(--chrome-border);
+  background: var(--paper-white);
+  padding: 16px;
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+/* ---------- Tokens / Tags ---------- */
+.token {
+  display: inline-block;
+  padding: 2px 8px;
+  border: var(--chrome-border);
+  background: var(--paper);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.token:hover { background: var(--butter); }
+.token.active { background: var(--mix-y); }
+
+/* ---------- Stats Panel ---------- */
+.stats-bar {
+  display: flex;
+  gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-mid);
+  padding: 6px 0;
+}
+
+/* ---------- Misc ---------- */
+.text-sm { font-size: 12px; }
+.text-xs { font-size: 11px; }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.p-16 { padding: 16px; }
+.w-full { width: 100%; }
